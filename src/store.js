@@ -11,7 +11,12 @@ export const mutations = {
     // TODO
   },
   removeTodo: (state, payload) => {
-    // TODO
+    for (const [index, todo] of state.todos.entries()) {
+      if (todo.createdAt.getTime() === payload.createdAt.getTime()) {
+        state.todos.splice(index, 1)
+        break
+      }
+    }
   }
 }
 
