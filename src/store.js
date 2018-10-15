@@ -42,8 +42,21 @@ export const defaultState = {
   ]
 }
 
+export const getters = {
+  doneTodos: state => {
+    return state.todos.filter(todo => todo.checked)
+  },
+  unDoneTodos: state => {
+    return state.todos.filter(todo => !todo.checked)
+  },
+  sortedTodos: (state, getters) => {
+    return [...getters.unDoneTodos, ...getters.doneTodos.reverse()]
+  }
+}
+
 export default new Vuex.Store({
   state: defaultState,
+  getters,
   mutations,
   actions
 })

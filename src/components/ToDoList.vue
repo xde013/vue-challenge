@@ -4,7 +4,7 @@
       <to-do-input class='input'></to-do-input>
 
       <div class='todo-items'>
-          <to-do-item v-for="todo in $store.state.todos" :key="todo.createdAt.getTime()" :todo="todo"></to-do-item>
+          <to-do-item v-for="todo in todos" :key="todo.createdAt.getTime()" :todo="todo"></to-do-item>
       </div>
   </div>
 </template>
@@ -14,7 +14,12 @@ import ToDoInput from './ToDoInput'
 import ToDoItem from './ToDoItem'
 export default {
   name: 'ToDoList',
-  components: {ToDoInput, ToDoItem}
+  components: {ToDoInput, ToDoItem},
+  computed: {
+    todos () {
+      return this.$store.getters.sortedTodos
+    }
+  }
 }
 </script>
 
