@@ -4,6 +4,7 @@
     <input type='checkbox' v-model="todo.checked">
      {{this.todo.text}}
      <span class='timeago'> {{ todo.createdAt | timeAgo }} </span>
+     <button class="remove"  @click="removeTodo(todo)"> X </button>
   </div>
 </template>
 
@@ -13,6 +14,11 @@ export default {
   props: {
     todo: {
       required: true
+    }
+  },
+  methods: {
+    removeTodo (todo) {
+      if (confirm('This will delete the todo permenatly.')) this.$store.dispatch('removeTodo', todo)
     }
   },
   filters: {
@@ -40,9 +46,24 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
+    .todo-item {
+      height 30px
+      width auto
+      padding-bottom 2%
+    }
     .timeago {
         opacity .5
         font-size .8em
         font-weight 200
+    }
+    .remove {
+      float right
+      background-color #f44336
+      border none
+      color #fff
+      text-align center
+      text-decoration none
+      margin-left 12px
+      cursor pointer
     }
 </style>
