@@ -1,9 +1,8 @@
 <template>
   <div class="todo-item">
-
     <input type='checkbox' v-model="todo.checked">
-     {{this.todo.text}}
-     <span class='timeago'> {{ todo.createdAt | timeAgo }} </span>
+     <span class="todo-text"> {{this.todo.text}} </span>
+     <span class='timeago'> {{timeAgo(todo.createdAt) }} </span>
      <button class="remove"  @click="removeTodo(todo)"> X </button>
   </div>
 </template>
@@ -16,14 +15,18 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+      now: new Date().getTime(),
+      interval: 1000
+    }
+  },
   methods: {
     removeTodo (todo) {
       if (confirm('This will delete the todo permenatly.')) this.$store.dispatch('removeTodo', todo)
-    }
-  },
-  filters: {
+    },
     timeAgo (date) {
-      const seconds = Math.floor((new Date() - date) / 1000)
+      const seconds = Math.floor((this.now - date) / 1000)
       const formats = [
         { format: 'year', duration: 356 * 24 * 60 * 60 },
         { format: 'month', duration: 30 * 24 * 60 * 60 },
@@ -40,6 +43,11 @@ export default {
       }
       return 'Just now'
     }
+  },
+  created() {
+    setInterval(() => {
+      this.now = new Date().getTime()
+    }, this.interval)
   }
 }
 </script>
