@@ -26,8 +26,10 @@ export default {
       if (confirm('This will delete the todo permenatly.')) this.$store.dispatch('removeTodo', todo)
     },
     timeAgo (date) {
+      // convert to seconds
       const seconds = Math.floor((this.now - date) / 1000)
       const formats = [
+        // duration represents how many seconds in the time span
         { format: 'year', duration: 356 * 24 * 60 * 60 },
         { format: 'month', duration: 30 * 24 * 60 * 60 },
         { format: 'week', duration: 7 * 24 * 60 * 60 },
@@ -38,13 +40,16 @@ export default {
       ]
       for (const f of formats) {
         const interval = Math.floor(seconds / f.duration)
+        // pluralize format
         const format = interval > 1 ? f.format + 's' : f.format
         if (interval >= 1) return `${interval} ${format} ago`
       }
+      // No time difference
       return 'Just now'
     }
   },
   created() {
+    // Exploit Vue data binding
     setInterval(() => {
       this.now = new Date().getTime()
     }, this.interval)

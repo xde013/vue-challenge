@@ -1,4 +1,4 @@
-# VueJS Challange
+# VueJS Challenge
 
 This test is meant to not only assess your grasp of the technology used in our Project Team but also to give you an idea of how we work - if you take joy in the challenge, chances are you will love working with us!
 
