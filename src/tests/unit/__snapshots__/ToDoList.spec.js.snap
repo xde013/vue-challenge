@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToDoList.vue matches snapshot 1`] = `
+<div class="todo-list">
+  <todoinput-stub class="input"></todoinput-stub>
+  <div class="todo-items">
+    <todoitem-stub todo="[object Object]"></todoitem-stub>
+    <todoitem-stub todo="[object Object]"></todoitem-stub>
+  </div>
+</div>
+`;
