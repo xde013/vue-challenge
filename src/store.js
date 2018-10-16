@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import { todos } from '@/mockData'
 Vue.use(Vuex)
 
 export const mutations = {
@@ -32,20 +32,7 @@ export const actions = {
   }
 }
 
-export const defaultState = {
-  todos: [
-    {
-      text: 'Think real hard about whats for lunch',
-      checked: false,
-      createdAt: new Date(Date.now() - 3600)
-    },
-    {
-      text: 'Buy some Pantos and start looking for Lambos',
-      checked: false,
-      createdAt: new Date(Date.now() - 7200)
-    }
-  ]
-}
+export const defaultState = { todos }
 
 export const getters = {
   doneTodos: state => {
