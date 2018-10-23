@@ -15,7 +15,7 @@ export default {
       required: true
     }
   },
-  data() {
+  data () {
     return {
       now: new Date().getTime(),
       interval: 1000
@@ -48,7 +48,7 @@ export default {
       return 'Just now'
     }
   },
-  created() {
+  created () {
     // Exploit Vue data binding
     setInterval(() => {
       this.now = new Date().getTime()
